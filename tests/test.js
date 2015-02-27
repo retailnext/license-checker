@@ -26,6 +26,13 @@ var tests = {
             });
         },
         'and give us results': function (d) {
+            var no_license = [];
+            for (var key in d) {
+                if (!d[key].licenses) {
+                    no_license.push(key);
+                }
+            }
+            assert.deepEqual(no_license, []);
             assert.isTrue(Object.keys(d).length > 70);
             assert.equal(d['abbrev@1.0.5'].licenses, 'MIT');
         },
